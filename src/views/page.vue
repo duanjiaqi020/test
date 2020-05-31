@@ -59,12 +59,13 @@
           <div class="clear"></div>
         </div>
       </div>
+      
       <div class="page_down_hot">
         <div class="page_down_hotpop">设置与反馈</div>
          <div class="page_mid2">
           <div class="page_mid_img">
             <img class="page_min_img_wallet" src="..\assets\钱包.png" alt />
-            <div class="page_min_img_notes">我的账户</div>
+            <div class="page_min_img_notes">我的11账户</div>
           </div>
           <div class="page_mid_img">
             <img class="page_min_img_wallet" src="..\assets\红包.png" alt />

@@ -59,10 +59,10 @@
           <div class="clear"></div>
         </div>
       </div>
-      
+
       <div class="page_down_hot">
         <div class="page_down_hotpop">设置与反馈</div>
-         <div class="page_mid2">
+        <div class="page_mid2">
           <div class="page_mid_img">
             <img class="page_min_img_wallet" src="..\assets\钱包.png" alt />
             <div class="page_min_img_notes">我的账户</div>
@@ -75,12 +75,36 @@
             <img class="page_min_img_wallet" src="..\assets\认证成功.png" alt />
             <div class="page_min_img_notes">认证中心</div>
           </div>
-        
           <div class="clear"></div>
         </div>
       </div>
     </div>
-    <div class="page_bottom"></div>
+   
+    <div class="page_bottom">
+       <div class="page_bottom_add">
+      <img class="page_bottom_add1" src="..\assets\加号.png" alt />
+     </div>
+      <div class="page_mid_img1">
+        <img class="page_min_img_wallet" src="..\assets\钱包.png" alt />
+        <div class="page_min_img_notes">我的账户</div>
+        
+      </div>
+      <div class="page_mid_img1">
+        <img class="page_min_img_wallet" src="..\assets\红包.png" alt />
+        <div class="page_min_img_notes">我的红包</div>
+        
+      </div>
+      <div class="page_mid_img2">
+        <img class="page_min_img_wallet" src="..\assets\认证成功.png" alt />
+        <div class="page_min_img_notes">认证中心</div>
+        
+      </div>
+      <div class="page_mid_img2">
+        <img class="page_min_img_wallet" src="..\assets\空间.png" alt />
+        <div class="page_min_img_notes">我的动态</div>
+      </div>
+      
+    </div>
   </div>
 </template>
 
@@ -93,6 +117,10 @@ export default {
 <style>
 .page_bk {
   font-size: 14px;
+  color: #dddddd;
+  min-height:100vh;
+  position: relative;
+  background: #f8f8f8;
 }
 .page_top {
   color: #ffffff;
@@ -171,13 +199,43 @@ export default {
   padding: 0 16px;
 }
 .page_down {
-  margin-top: 150px;
+ padding-top: 150px;
+ background-color: #fff;
 }
 .page_down_hotpop {
   padding-left: 10px;
   border-left: 5px solid #f44;
 }
-.page_mid2 {
-
+.page_bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+   background-color:#fff ;
 }
+.page_bottom_add1 {
+  height: 85px;
+  width: 85px;
+  position: fixed;
+     left:  0;
+    right:  0;
+    margin: 0 auto;
+    bottom: 10px;
+}
+.page_mid_img1 {
+  width: 20%;
+  text-align: center;
+  float: left;
+  margin-top: 15px;
+  box-sizing: border-box;
+  
+}
+.page_mid_img2 {
+  width: 20%;
+  text-align: center;
+  float: right;
+  margin-top: 15px;
+  box-sizing: border-box;
+ 
+}
+
 </style>

@@ -6,7 +6,11 @@ import List from "../views/List.vue";
 import Content from"../views/Content.vue";
 import Navigation from"../views/Navigation.vue";
 import page from"../views/page.vue";
-Vue.use(VueRouter);
+import Login from"../views/Login.vue";
+import Diana from"../views/Diana.vue";
+import Practice from"../views/Practice.vue";
+Vue.use(VueRouter)
+
 const routes = [
   {
     path: "/",
@@ -19,7 +23,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
+    component: () =>  
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },{
     path: "/List",
@@ -37,7 +41,20 @@ const routes = [
     path:  "/page",
     name: "page",
     component: page
-  }
+  },{
+    path:  "/login",
+    name: "Login",
+    component: Login
+  },{
+    path:  "/Diana",
+    name: "Diana",
+    component: Diana
+  },{
+    path: "/Practice",
+    name: "Practice",
+    component: Practice
+  },
+
 
 ];
 

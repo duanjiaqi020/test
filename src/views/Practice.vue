@@ -5,14 +5,17 @@
         v-bind:class="item.sex=='男'?'active':'hasError'"
         v-for="(item,index) in items"
         :key="index"
-      >{{ item.name }},{{ item.sex }},{{item.age}}</li>
+      >
+        {{ item.name }},{{ item.sex }},{{item.age}}
+        <button @click="handeDelete(index,item)">删除</button>
+      </li>
     </ul>
     <div>
       <ul>
         <li>
-          <input v-model="form.name">
-          <input v-model="form.age">
-          <input v-model="form.sex">
+          <input v-model="form.name" />
+          <input v-model="form.sex" />
+          <input v-model="form.age" />
           <button @click="handeSubmit">提交</button>
         </li>
       </ul>
@@ -22,6 +25,7 @@
 <script>
 export default {
   name: "Practice",
+  //数据
   data() {
     return {
       items: [
@@ -39,9 +43,35 @@ export default {
       }
     };
   },
+  //自动运行
+  mounted() {
+    console.log(JSON.stringify(this.items));
+    let nan = [],
+      nu = [];
+      let zong=0;
+      let pingjun=0;
+    this.items.map((value, index) => {
+      console.log(value);
+      console.log(index);
+      if (value.sex == "男") {
+        nan.push(value);
+      } else {
+        nu.push(value);
+      };
+      zong=value.age-0+zong;
+    });
+    console.log("平均年龄"+zong/this.items.length);
+    console.log("男生：" + nan.length);
+    console.log("女生：" + nu.length);
+  },
+  //方法
   methods: {
-    handeSubmit: function() {
-      this.items.push(this.form);
+    handeSubmit() {
+      this.items.push(Object.assign({}, this.form));
+    },
+    handeDelete(index, item) {
+      console.log(item);
+      this.items.splice(index, 1);
     }
   }
 };

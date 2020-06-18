@@ -9,6 +9,8 @@ import page from"../views/page.vue";
 import Login from"../views/Login.vue";
 import Diana from"../views/Diana.vue";
 import Practice from"../views/Practice.vue";
+import ccccc from"../views/ccccc.vue";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,6 +55,10 @@ const routes = [
     path: "/Practice",
     name: "Practice",
     component: Practice
+  },{
+    path: "/ccccc",
+    name: "ccccc",
+    component: ccccc
   },
 
 

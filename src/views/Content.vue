@@ -1,15 +1,16 @@
 
 <template>
   <div class="content_one">
+    <HelloWorld msg="我是主页"></HelloWorld>
     <div class="content_top">
-      <div class="content_one_return">
+      <div class="content_one_return" @click="back()">
         <img src="..\assets\左箭头.png" alt />
       </div>
       <div class="content_one_article">文章详情</div>
       <div class="clear"></div>
     </div>
     <div class="content_one_title">我是测试标题</div>
-    
+
     <div class="content_one_editor">
       <div class="content_one_name">作者：管理员</div>
       <div class="content_one_time">2019-05-17 17:13:25</div>
@@ -26,8 +27,20 @@
 </template>
 
 <script>
+import HelloWorld from "@/components/HelloWorld.vue";
 export default {
-  name: "Content"
+  name: "Content",
+  components: {
+    HelloWorld
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 
@@ -36,27 +49,26 @@ export default {
   clear: both;
 }
 .content_top {
-    position: relative;
-
+  position: relative;
 }
 
 .content_one_return img {
   width: 26px;
   position: absolute;
   top: 10px;
-    left: 13px;
+  left: 13px;
 }
 .content_one_title {
   font-size: 20px;
   font-weight: 700;
-  
+
   margin-left: 17px;
   margin-top: 10px;
 }
 .content_one_article {
   padding: 10px;
   font-size: 20px;
-    text-align: center;
+  text-align: center;
 }
 .content_one_editor {
   margin: 10px;

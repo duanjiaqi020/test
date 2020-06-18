@@ -238,7 +238,15 @@
 </template>
 <script>
 export default {
-  name: "Navigation"
+  name: "Navigation",
+  data(){
+      return{
+
+      }
+  },
+  methods:{
+
+  },
 };
 </script>
 

@@ -71,7 +71,8 @@ export default {
     greet: function(a,b) {
       alert(a);
      console.log(b);
-    }
+    },
+    
   }
 };
 </script>

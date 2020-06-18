@@ -2,6 +2,10 @@
   <div id="app">
 
     <router-view />
+    <!-- <p>导航
+        <router-link to="/">首页</router-link> 
+         <router-link to="/About">第二页</router-link> 
+    </p> -->
   </div>
 </template>
 

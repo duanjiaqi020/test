@@ -66,6 +66,7 @@ export default {
     }
   }
 };
+
 </script>
 <style>
 .login_top_img {

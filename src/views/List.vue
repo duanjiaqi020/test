@@ -1,8 +1,6 @@
 /* eslint-disable vue/valid-template-root */
 <template>
-
   <div class="list">
-    <HelloWorld msg="我是主页"></HelloWorld>
     <div class="list_top">
       <div class="list_li listBack1" @click="listes()">
         <img alt src="..\assets\icon_android.png" />
@@ -79,7 +77,6 @@
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -88,12 +85,19 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "list",
   components: {
-    HelloWorld
+  
   },
   data() {
-    return {};
+    return {
+
+    };
   },
-  mounted() {},
+  mounted() {
+    //mounted页面加载完后自动运行，可以去运行方法，或者改变变量，而不是直接把axios写在这里，
+    //this.$http 使用封装好的axios，你看我发给你我使用的截图，怎么用的
+    this.loadlist();
+    //window.addEventListener("scroll", this.handleScroll);
+  },
   methods: {
     listes() {
       this.$router.push({
@@ -110,8 +114,25 @@ export default {
           id: "2"
         }
       });
+    },
+    loadlist() {
+      let obj = {
+        page: this.page,
+        size: this.size
+      };
+      this.$http
+        .post('/api/total/list', obj)
+        .then(res => {
+          let data = res.data.data;
+          console.log(res)
+          console.log(res.data.message )
+          console.log(res.data.result.data)
+        })
+        .catch(err => {});
     }
-  }
+  },
+
+  created() {}
 };
 </script>
 <style lang="scss">

@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="nav_box">
-      <div class="nav_box_arrow">
+      <div class="nav_box_arrow" @click="back()">
         <img alt src="..\assets\左箭头.png" />
         <div class="nav_box_title">轻松学课程</div>
         <div class="clear"></div>
@@ -10,228 +10,42 @@
     <div class="navList">
       <div class="nav_box_mid">
         <div class="nav_list">方向</div>
-        <div class="nav_list">前端开发</div>
-        <div class="nav_list">移动开发</div>
-        <div class="nav_list">数据库</div>
-        <div class="nav_list">云计算&大数据</div>
-        <div class="nav_list">运维&测试</div>
-        <div class="nav_list">UI设计</div>
+        <div
+          class="nav_list"
+          v-for="(item,index) in directionList"
+          :key="index"
+          @click="classificationList(item)"
+          :class="direction_id==item.direction_id?'nav_list_active':''"
+        >{{item.direction_name}}</div>
+        <!-- 方向 -->
       </div>
       <div class="box_line"></div>
       <div class="nav_box_mid">
         <div class="nav_list">分类</div>
 
-        <div class="nav_list">全部</div>
-        <div class="nav_list">HTML/CSS</div>
-        <div class="nav_list">JavasSript</div>
-        <div class="nav_list">Html5</div>
-        <div class="nav_list">CSS3</div>
-        <div class="nav_list">jQuery</div>
-        <div class="nav_list">Node.js</div>
-        <div class="nav_list">AngularJS</div>
-        <div class="nav_list">Bootstrap</div>
-        <div class="nav_list">React.Js</div>
-        <div class="nav_list">Vue.js</div>
-        <div class="nav_list">Sass/Less</div>
-        <div class="nav_list">WebApp</div>
+        <div
+          class="nav_list"
+          v-for="(items,index) in classification_type"
+          :key="index"
+          @click="classificationType(items)"
+          :class="classification_id==items.classification_id?'nav_list_active':''"
+        >{{items.classification_type}}</div>
+        <!-- 分类 -->
       </div>
-    </div>
-    <div class="nav_body">
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
+      <div class="nav_body" v-for="(items,index) in list" :key="index" @click="toDetail(items)">
         <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
+          <img alt :src="items.total_cover" />
 
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
+          <div class="nav_body_article">
+            <div class="nav_body_content">{{items.total_title}}</div>
 
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
+            <div class="nav_body_jun">
+              <div class="nav_body_writer">{{items.total_author}}</div>
+              <div class="nav_body_time">{{items.total_time}}</div>
+              <div class="clear"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav_body_box">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
-
-        <div class="nav_body_article">
-          <div class="nav_body_content">误入前端三年，一个文科生的独白（中）</div>
-
-          <div class="nav_body_jun">
-            <div class="nav_body_writer">作者：润土大叔</div>
-            <div class="nav_body_time">2020年5月25日12:08:56</div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-
       </div>
     </div>
   </div>
@@ -239,14 +53,122 @@
 <script>
 export default {
   name: "Navigation",
-  data(){
-      return{
-
+  data() {
+    return {
+      classification_id: "",
+      classification_type: [],
+      direction_id: "1",
+      total_id: "",
+      list: [],
+      page: 0,
+      size: 10,
+      directionList: [
+        {
+          direction_name: "前端开发",
+          direction_id: 1
+        },
+        {
+          direction_name: "后端开发",
+          direction_id: 2
+        },
+        {
+          direction_name: "移动开发",
+          direction_id: 3
+        },
+        {
+          direction_name: "数据库",
+          direction_id: 4
+        },
+        {
+          direction_name: "云计算&大数据",
+          direction_id: 5
+        },
+        {
+          direction_name: "运维&测试",
+          direction_id: 6
+        },
+        {
+          direction_name: "UI设计",
+          direction_id: 7
+        }
+      ]
+    };
+    hasNextPage: true;
+  },
+  mounted() {
+    this.contentes();
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+    handleScroll() {
+      if (
+        document.body.clientHeight - document.documentElement.scrollTop - 667 <
+        200
+      ) {
+        if (this.hasNextPage == true) {
+          this.page++;
+          this.hasNextPage = false;
+          this.loadList();
+        }
       }
-  },
-  methods:{
+    },
+   
+    classificationList(item) {
+      this.direction_id = item.direction_id;
+      this.list = [];
+      this.page = 0;
+      this.contentes(); //点击方向
+    },
+    classificationType(items) {
+      this.classification_id = items.classification_id;
+      this.list = [];
+      this.page = 0;
+      this.loadList(); //点击分类
+    },
+    toDetail(items) {
+      this.$router.push({
+        path: "/Content",
+        query: {
+          total_id: items.total_id
+        }
+      });
+    },
 
-  },
+    contentes() {
+      let obj = {
+        direction_id: this.direction_id
+      };
+      this.$http
+        .post("/api/classification/list", obj)
+        .then(res => {
+          this.classification_type = res.data.result.data;
+          this.classification_id = this.classification_type[0].classification_id;
+          this.loadList();
+          console.log(this.classification_type);
+        })
+        .catch(err => {});
+    },
+
+    loadList() {
+      let sb = {
+        direction_id: this.direction_id,
+        classification_id: this.classification_id,
+        page: this.page,
+        size: this.size
+      };
+      this.$http
+        .post("/api/total/list", sb)
+        .then(res => {
+          let data = res.data.result.data;
+          data.length < this.size ? "" : (this.hasNextPage = true);
+          this.list = [...this.list, ...data];
+        })
+        .catch(err => {});
+    }
+  }
 };
 </script>
 
@@ -297,7 +219,7 @@ export default {
 }
 .nav_body_jun {
   border-bottom: 2px solid #e8e8e8;
-  margin-left: 120px; 
+  margin-left: 120px;
   font-size: 14px;
   color: #999;
   display: block;
@@ -311,7 +233,8 @@ export default {
 }
 .nav_body_time {
   float: right;
-  
-  
+}
+.nav_list_active {
+  color: #f44;
 }
 </style>

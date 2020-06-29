@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     getCode() {
-      let codeTime = 5;
+      let codeTime = 60;
       if (this.show) {
         this.show = false;
         this.count = codeTime;

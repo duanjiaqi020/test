@@ -2,6 +2,7 @@
   <div id="111">
     <ul>
       <div
+        class="list_body"
         v-for="(item,index) in items"
         :key="index"
         v-bind:class="item.sex=='男'?'active':'hasError'"

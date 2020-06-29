@@ -21,59 +21,18 @@
       <div class="clear"></div>
     </div>
     <div class="bottom">
-      <div class="list_body" @click="bodyLink()">
-        <img alt src="..\assets\QQ图片20200513112402.png" />
+      <div class="list_body" v-for="(item,index) in listarr" :key="index" @click="bodyLink(item)">
+        <img alt :src="item.total_cover" />
         <div class="list_cont">
-          <div class="list_title">测试标题</div>
+          <div class="list_title">{{item.total_title}}</div>
 
           <div class="list_bottom">
-            <div class="list_author">作者：管理员</div>
+            <div class="list_author">{{item.total_author}}</div>
 
-            <div class="list_time">2018-05-19 15:37:46</div>
+            <div class="list_time">{{item.total_time}}</div>
 
             <div class="clear"></div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="list_body">
-      <img alt src="..\assets\QQ图片20200513112402.png" />
-      <div class="list_cont">
-        <div class="list_title">测试标题</div>
-
-        <div class="list_bottom">
-          <div class="list_author">作者：管理员</div>
-
-          <div class="list_time">2018-05-19 15:37:46</div>
-
-          <div class="clear"></div>
-        </div>
-      </div>
-    </div>
-    <div class="list_body">
-      <img alt src="..\assets\QQ图片20200513112402.png" />
-      <div class="list_cont">
-        <div class="list_title">测试标题</div>
-
-        <div class="list_bottom">
-          <div class="list_author">作者：管理员</div>
-
-          <div class="list_time">2018-05-19 15:37:46</div>
-          <div class="clear"></div>
-        </div>
-      </div>
-    </div>
-    <div class="list_body">
-      <img alt src="..\assets\QQ图片20200513112402.png" />
-      <div class="list_cont">
-        <div class="list_title">测试标题</div>
-
-        <div class="list_bottom">
-          <div class="list_author">作者：管理员</div>
-
-          <div class="list_time">2018-05-19 15:37:46</div>
-
-          <div class="clear"></div>
         </div>
       </div>
     </div>
@@ -84,21 +43,39 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "list",
-  components: {
-  
-  },
+  components: {},
   data() {
     return {
-
+      listarr: [],
+      page: 0,
+      size: 20,
+      total_id: "",
+      hasNextPage: true
     };
   },
   mounted() {
     //mounted页面加载完后自动运行，可以去运行方法，或者改变变量，而不是直接把axios写在这里，
-    //this.$http 使用封装好的axios，你看我发给你我使用的截图，怎么用的
+    //this.$http 使用封装好的axios
     this.loadlist();
-    //window.addEventListener("scroll", this.handleScroll);
+    //监听滑动事件
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
+    //监听滑动事件分页
+    handleScroll() {
+      //文档body的高度-滚动条距离上边的高度-滚动条高度如果小于200则请求下一页
+      if (
+        document.body.clientHeight - document.documentElement.scrollTop - 667 <
+        200
+      ) {
+        if (this.hasNextPage == true) {
+          this.page++;
+          this.hasNextPage = false;//避免不断请求新数据
+          this.loadlist();
+        }
+      }
+    },
+    //跳转分类页面
     listes() {
       this.$router.push({
         path: "/Navigation",
@@ -107,11 +84,13 @@ export default {
         }
       });
     },
-    bodyLink() {
+    //详情跳转
+    bodyLink(item) {
+      console.log(item.total_id);
       this.$router.push({
         path: "/Content",
         query: {
-          id: "2"
+          total_id: item.total_id
         }
       });
     },
@@ -121,12 +100,15 @@ export default {
         size: this.size
       };
       this.$http
-        .post('/api/total/list', obj)
+        .post("/api/total/list", obj)
         .then(res => {
-          let data = res.data.data;
-          console.log(res)
-          console.log(res.data.message )
-          console.log(res.data.result.data)
+          let data = res.data.result.data;
+          // console.log(res)
+          // console.log(res.data.message )
+          data.length < this.size ? "" : this.hasNextPage = true;//判断数据长度如果小于size长度的话证明没有下一页了，否则将存在下一页
+          this.listarr = [...this.listarr, ...data];//数据合并
+
+          console.log(this.listarr);
         })
         .catch(err => {});
     }

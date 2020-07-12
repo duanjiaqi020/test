@@ -24,7 +24,6 @@
       </div>
       <div class="login_mid_user">
         <div class="login_mid_username">验证码</div>
-
         <div class="login_mid_username1">
           <input class="login_mid_border" type="text" placeholder="请输入验证码" />
           <div class="code" @click="getCode" v-show="show">点击获取验证码</div>

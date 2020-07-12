@@ -10,7 +10,8 @@ import Login from"../views/Login.vue";
 import Diana from"../views/Diana.vue";
 import Practice from"../views/Practice.vue";
 import ccccc from"../views/ccccc.vue";
-
+import manageLogin from"../views/manage/login.vue";
+import passwordForget from"../views/manage/passwordForget";
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,7 +60,15 @@ const routes = [
     path: "/ccccc",
     name: "ccccc",
     component: ccccc
-  },
+  },{
+    path:"/manage/login",
+    name:"manageLogin",
+    component:manageLogin
+  },{
+    path:"/manage/passwordForget",
+    name:"passwordForget",
+    component:passwordForget
+  }
 
 
 ];

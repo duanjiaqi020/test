@@ -40,7 +40,8 @@ export default {
         hit: '',
         unparalleled: "",
         critical_strike: "",
-        critical_effect: ""
+        critical_effect: "",
+        ages:"",
       },
       rules: {
         hit: [
@@ -76,8 +77,15 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    ages(){
+
     }
+
+
   }
+
+
 };
 </script>
 <style>

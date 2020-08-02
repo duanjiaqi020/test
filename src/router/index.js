@@ -12,6 +12,7 @@ import Practice from"../views/Practice.vue";
 import ccccc from"../views/ccccc.vue";
 import manageLogin from"../views/manage/login.vue";
 import passwordForget from"../views/manage/passwordForget";
+import manage from"../views/manage/manage.vue";
 Vue.use(VueRouter)
 
 const routes = [
@@ -68,6 +69,10 @@ const routes = [
     path:"/manage/passwordForget",
     name:"passwordForget",
     component:passwordForget
+  },{
+    path:"/manage/manage",
+    name:"manage",
+    component:manage
   }
 
 
